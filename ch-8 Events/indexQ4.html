@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!DOCTYPE html>
+    <html>
+
+    <head>
+        <title>Auto Fetch Every 5 Seconds</title>
+    </head>
+    <!-- 4} Write a javascript program to keep fetching content of a website( Every 5 sec) -->
+
+    <body>
+        <h2>🔄 Live Website Content</h2>
+        <div id="output">Waiting for content...</div>
+
+        <script>
+            function fetchContent() {
+                fetch('https://api.chucknorris.io/jokes/random') // Example API
+                    .then(response => response.json()).then(data => {
+                        document.getElementById('output').innerText = data.value;
+                    })
+                    .catch(error => {
+                        document.getElementById('output').innerText = 'Error fetching content';
+                        console.error('Fetch error:', error);
+                    });
+            }
+
+            // Fetch every 5 seconds (5000 milliseconds)
+            setInterval(fetchContent, 5000);
+
+            // Initial fetch right away
+            fetchContent();
+        </script>
+    </body>
+
+    </html>
+    <script src="scriptQ4.js"></script>
+</body>
+
+</html>
